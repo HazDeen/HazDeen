@@ -9,7 +9,7 @@
   <a href="mailto:h4zdeen@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
-  <a href="ТВОЕ_ПОРТФОЛИО_ИЛИ_САЙТ">
+  <a href="https://hazdeen.github.io/HazDeen/">
     <img src="https://img.shields.io/badge/Мой_Сайт-252F3F?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/>
   </a>
 </p>
@@ -28,10 +28,6 @@
         <li>🌱 Сейчас активно улучшаю свои навыки в работе с <b>Frontend</b>.</li>
         <li>👯 Открыт к сотрудничеству в интересных <b>Open Source проектах</b> или стартапах.</li>
       </ul>
-    </td>
-    <td width="40%" style="border: none;">
-      <!-- Анимированный печатающийся текст -->
-      <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=2196F3&center=true&vCenter=true&width=400&lines=Пишу+чистый+код;Люблю+решать+сложные+задачи;Создаю+удобные+интерфейсы" alt="Typing SVG" />
     </td>
   </tr>
 </table>
@@ -58,18 +54,6 @@
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
 </p>
-
----
-
-<h2 align="center">📈 GitHub Статистика</h2>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=HazDeen&show_icons=true&theme=react&hide_border=true&bg_color=0D1117&rank_icon=github" alt="Статистика GitHub" width="48%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=HazDeen&layout=compact&theme=react&hide_border=true&bg_color=0D1117" alt="Топ языков" width="48%" />
-</p>
-
-<!-- Анимированная змейка коммитов (создается через GitHub Actions, если она тебе нужна - скажи, я помогу ее настроить!) -->
-<!-- <p align="center"><img src="https://raw.githubusercontent.com/ТВОЙ_НИК/ТВОЙ_НИК/output/github-contribution-grid-snake.svg" alt="Змейка коммитов"/></p> -->
 
 ---
 <p align="center">
