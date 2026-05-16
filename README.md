@@ -1,5 +1,5 @@
 <!-- Красивый анимированный баннер в шапке (можно менять цвета) -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=250&section=header&text=Привет,%20я%20[Твое%20Имя]&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Разработчик%20|%20Энтузиаст%20|%20Студент&descAlignY=55&descAlign=62" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=250&section=header&text=Привет,%20я%20HazDeen&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Разработчик%20|%20Энтузиаст%20|%20Студент&descAlignY=55&descAlign=62" width="100%" />
 
 <!-- Блок с социальными сетями в виде красивых кнопок -->
 <p align="center">
