@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Портфолио & Резюме</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4F46E5', // Indigo 600
+                        secondary: '#10B981', // Emerald 500
+                        dark: '#111827', // Gray 900
+                        light: '#F3F4F6', // Gray 100
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Анимация для появления элементов при скролле */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Стили для прогресс-баров */
+        .progress-bar-fill {
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Анимация для бегущей строки навыков */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 0.75rem)); } /* Смещение на половину ширины минус половина gap-6 */
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: scroll 25s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-light text-gray-800 dark:bg-dark dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Навигация -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Лого/Имя -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold text-primary dark:text-secondary">Завалом Максим</a>
+                </div>
+                
+                <!-- Меню для десктопа -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-secondary transition-colors">Обо мне</a>
+                    <a href="#skills" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-secondary transition-colors">Навыки</a>
+                    <a href="#experience" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-secondary transition-colors">Опыт</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-secondary transition-colors">Портфолио</a>
+                    <a href="https://t.me/h4zdeen" target="_blank" class="px-4 py-2 rounded-full bg-primary text-white hover:bg-indigo-700 dark:bg-secondary dark:hover:bg-emerald-600 transition-colors shadow-sm">Связаться</a>
+                    
+                    <!-- Переключатель темы -->
+                    <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors focus:outline-none">
+                        <i id="theme-icon" class="fas fa-moon text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Кнопка мобильного меню -->
+                <div class="md:hidden flex items-center">
+                    <button id="theme-toggle-mobile" class="mr-4 text-gray-500 dark:text-gray-400 focus:outline-none">
+                        <i id="theme-icon-mobile" class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800">Обо мне</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800">Навыки</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800">Опыт</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800">Портфолио</a>
+                <a href="https://t.me/h4zdeen" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-primary font-bold hover:bg-gray-50 dark:text-secondary dark:hover:bg-gray-800">Связаться</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран (Hero Section) -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <!-- Замените фото на свое -->
+            <img src="images/hazdeen.jpg" alt="Мое фото" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-white dark:border-gray-700 shadow-lg object-cover">
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
+                Привет, я <span class="text-primary dark:text-secondary">Максим Завалом</span>
+            </h1>
+            <h2 class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 font-light">
+                Fullstack Разработчик | AI Engineering Student
+            </h2>
+            
+            <div class="flex justify-center space-x-4">
+                <a href="#portfolio" class="px-8 py-3 rounded-full bg-primary text-white font-medium hover:bg-indigo-700 dark:bg-secondary dark:hover:bg-emerald-600 transition shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                    Мои работы
+                </a>
+                <a href="https://t.me/h4zdeen" target="_blank" class="px-8 py-3 rounded-full bg-white text-gray-800 font-medium border border-gray-300 hover:bg-gray-50 dark:bg-transparent dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 transition shadow-sm hover:shadow-md transform hover:-translate-y-1">
+                    Связаться
+                </a>
+            </div>
+            
+            <!-- Ссылки на соцсети -->
+            <div class="mt-10 flex justify-center space-x-6">
+                <a href="https://github.com/HazDeen" target="_blank" class="text-gray-400 hover:text-gray-900 dark:hover:text-white transition text-3xl"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/h4zdeen" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-3xl"><i class="fab fa-telegram"></i></a>
+                <a href="mailto:h4zdeen@gmail.com" class="text-gray-400 hover:text-red-500 transition text-3xl"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative pb-4">
+                Обо мне
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary dark:bg-secondary rounded"></span>
+            </h2>
+            
+            <div class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed space-y-6 text-center md:text-left">
+                <p>
+                    Я начинающий, но невероятно целеустремленный Fullstack разработчик. Несмотря на то, что я нахожусь в начале коммерческого пути, я активно развиваюсь, создаю реальные проекты (включая Telegram Mini Apps) и беру на себя комплексные задачи: от верстки удобных интерфейсов до настройки серверов и реализации бэкенда.
+                </p>
+                <p>
+                    В данный момент я также получаю высшее образование по специальности "Инженерия систем искусственного интеллекта", что позволяет мне глубже понимать современные технологии и применять нестандартные подходы в разработке. Я всегда готов учиться новому и открыт к любым вызовам!
+                </p>
+                <div class="pt-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-2xl text-primary dark:text-secondary">< 1</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Года опыта</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-2xl text-primary dark:text-secondary">2</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Крупных проекта</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-2xl text-primary dark:text-secondary">5</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Довольных клиентов</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-2xl text-primary dark:text-secondary">100%</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Мотивации</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Навыки -->
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative pb-4">
+                Мои Навыки
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary dark:bg-secondary rounded"></span>
+            </h2>
+
+            <div class="marquee-container w-full py-4 relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+                <div class="animate-marquee flex gap-6">
+                    <!-- Набор 1 (Оригинал) -->
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-html5 text-orange-500 mr-3 text-2xl"></i> HTML
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-css3-alt text-blue-500 mr-3 text-2xl"></i> CSS
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-js text-yellow-400 mr-3 text-2xl"></i> JavaScript
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-python text-blue-400 mr-3 text-2xl"></i> Python
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fas fa-database text-indigo-500 mr-3 text-2xl"></i> Postgres / MySQL
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-docker text-blue-600 mr-3 text-2xl"></i> Docker
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-figma text-pink-500 mr-3 text-2xl"></i> Figma
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fas fa-camera-retro text-purple-500 mr-3 text-2xl"></i> Photoshop
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fas fa-video text-red-500 mr-3 text-2xl"></i> Premiere Pro
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-git-alt text-orange-600 mr-3 text-2xl"></i> Git / GitHub
+                    </div>
+                    
+                    <!-- Набор 2 (Копия для бесшовного зацикливания) -->
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-html5 text-orange-500 mr-3 text-2xl"></i> HTML
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-css3-alt text-blue-500 mr-3 text-2xl"></i> CSS
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-js text-yellow-400 mr-3 text-2xl"></i> JavaScript
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-python text-blue-400 mr-3 text-2xl"></i> Python
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fas fa-database text-indigo-500 mr-3 text-2xl"></i> Postgres / MySQL
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-docker text-blue-600 mr-3 text-2xl"></i> Docker
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-figma text-pink-500 mr-3 text-2xl"></i> Figma
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fas fa-camera-retro text-purple-500 mr-3 text-2xl"></i> Photoshop
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fas fa-video text-red-500 mr-3 text-2xl"></i> Premiere Pro
+                    </div>
+                    <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
+                        <i class="fab fa-git-alt text-orange-600 mr-3 text-2xl"></i> Git / GitHub
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6"><i class="fas fa-mouse-pointer mr-2"></i> Наведите курсор на панель, чтобы остановить прокрутку</p>
+        </div>
+    </section>
+
+    <!-- Опыт работы (Timeline) -->
+    <section id="experience" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative pb-4">
+                Опыт Работы & Образование
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary dark:bg-secondary rounded"></span>
+            </h2>
+
+            <div class="relative border-l border-gray-200 dark:border-gray-700 ml-3">
+                <!-- Элемент 1 (Текущая работа) -->
+                <div class="mb-10 ml-6">
+                    <span class="absolute flex items-center justify-center w-6 h-6 bg-primary dark:bg-secondary rounded-full -left-3 ring-8 ring-white dark:ring-gray-900">
+                        <i class="fas fa-briefcase text-white text-xs"></i>
+                    </span>
+                    <h3 class="flex flex-wrap items-center gap-2 mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                        Junior Разработчик 
+                        <span class="bg-blue-100 text-primary text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Текущее место работы</span>
+                    </h3>
+                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ноябрь 2025 - Настоящее время | PRIME GO SERVICES</time>
+                    <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Комплексная работа над проектом по предоставлению различных сервисов (например, Available Network). Настраиваю и администрирую VPS серверы, реализую архитектуру, создаю frontend и backend составляющие платформы.</p>
+                    <a href="https://t.me/primegoservicebot?start=ref_H4ZDEEN" target="_blank" class="inline-flex items-center px-4 py-2 mt-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-primary dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition shadow-sm">
+                        <i class="fas fa-robot mr-2 text-primary dark:text-secondary"></i> Рефералка в Telegram
+                    </a>
+                </div>
+                
+                <!-- Элемент 2 (Текущая учеба) - Перемещен и сделан активным -->
+                <div class="mb-10 ml-6">
+                    <span class="absolute flex items-center justify-center w-6 h-6 bg-primary dark:bg-secondary rounded-full -left-3 ring-8 ring-white dark:ring-gray-900">
+                        <i class="fas fa-graduation-cap text-white text-xs"></i>
+                    </span>
+                    <h3 class="flex flex-wrap items-center gap-2 mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                        Высшее образование (Студент)
+                        <span class="bg-emerald-100 text-emerald-600 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-emerald-900 dark:text-emerald-300">Текущее место учебы</span>
+                    </h3>
+                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Сентябрь 2025 - Настоящее время | МТУСИ</time>
+                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">Специализация: ТОП-ИИ Инженерия систем искусственного интеллекта. Углубленное изучение алгоритмов, машинного обучения и проектирования интеллектуальных систем.</p>
+                </div>
+
+                <!-- Элемент 3 (Прошлый опыт) -->
+                <div class="mb-10 ml-6">
+                    <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-gray-700">
+                        <i class="fas fa-code text-gray-500 dark:text-gray-400 text-xs"></i>
+                    </span>
+                    <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Junior Frontend Разработчик</h3>
+                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Октябрь 2025 - Декабрь 2025 | Проект Telemetrix</time>
+                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">Участие в проекте по глубокому анализу Telegram-каналов. Занимался разработкой пользовательских интерфейсов для платформы, предлагающей умные рекомендации и аналитику на основе алгоритмов ИИ.</p>
+                </div>
+
+                <!-- Элемент 4 (Прошлая учеба) -->
+                <div class="ml-6">
+                    <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-gray-700">
+                        <i class="fas fa-certificate text-gray-500 dark:text-gray-400 text-xs"></i>
+                    </span>
+                    <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Среднее специальное образование</h3>
+                    <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Сентябрь 2022 - Май 2023 | Оператор ЭВМ</time>
+                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">Получение фундаментальных навыков работы с ПК, администрирования сетей и прикладного программного обеспечения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio" class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative pb-4">
+                Мое Портфолио
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary dark:bg-secondary rounded"></span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Проект 1 -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden h-56 bg-gray-900">
+                        <img src="images/primego.jpg" alt="PRIME GO SERVICES" class="w-full h-full object-cover blur-md scale-110 transform group-hover:scale-125 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="https://t.me/primegoservicebot?start=ref_H4ZDEEN" target="_blank" class="px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition flex items-center transform hover:scale-105">
+                                <i class="fab fa-telegram-plane mr-2 text-primary"></i> Посмотреть в Telegram
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">PRIME GO SERVICES (AN)</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Сервис по предоставлению доступных сетей (Available Network). Проект включает в себя настройку VPS, полноценную backend/frontend разработку платформы и интеграцию с Telegram-ботом.</p>
+                    </div>
+                </div>
+
+                <!-- Проект 2 -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden h-56 bg-gray-900">
+                        <img src="images/cashflow.png" alt="CashFlow Tracker" class="w-full h-full object-cover blur-md scale-110 transform group-hover:scale-125 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="https://t.me/cashflow_trac_bot" target="_blank" class="px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition flex items-center transform hover:scale-105">
+                                <i class="fab fa-telegram-plane mr-2 text-primary"></i> Открыть Мини-Апп
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">CashFlow Tracker (TMA)</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Удобное Telegram Mini App (TMA) приложение для учета и аналитики финансов. Позволяет вести доходы и расходы, учитывать кредиты, долги, отслеживать смены на работе, рассчитывать зарплату и мониторить платные подписки.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white relative pb-4">
+                Свяжитесь со мной
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary dark:bg-secondary rounded"></span>
+            </h2>
+
+            <div class="max-w-2xl mx-auto text-center bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                    Открыт к новым вызовам, интересным проектам и предложениям о сотрудничестве! Самый быстрый способ связаться со мной — написать напрямую в Telegram.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://t.me/h4zdeen" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition shadow-lg hover:shadow-xl flex items-center justify-center transform hover:-translate-y-1">
+                        <i class="fab fa-telegram-plane text-2xl mr-3"></i> Написать в Telegram
+                    </a>
+                    <a href="mailto:h4zdeen@gmail.com" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition shadow-lg hover:shadow-xl flex items-center justify-center transform hover:-translate-y-1">
+                        <i class="fas fa-envelope text-2xl mr-3"></i> Отправить Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-bold">Максим Завалом</span>
+                <p class="text-sm text-gray-400 mt-1">&copy; 2026 Все права защищены.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://github.com/HazDeen" target="_blank" class="text-gray-400 hover:text-white transition text-2xl"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/h4zdeen" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-2xl"><i class="fab fa-telegram"></i></a>
+                <a href="mailto:h4zdeen@gmail.com" class="text-gray-400 hover:text-red-500 transition text-2xl"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Закрывать меню при клике на ссылку (мобильная версия)
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Переключение Темной/Светлой темы
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        
+        // Проверка сохраненной темы или системной
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateIcons('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateIcons('light');
+        }
+
+        function updateIcons(theme) {
+            if(theme === 'dark') {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                updateIcons('light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                updateIcons('dark');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+        // Анимация появления элементов при скролле (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Анимация прогресс баров если это секция навыков
+                    if(entry.target.closest('#skills')) {
+                        const progressBars = entry.target.querySelectorAll('.progress-bar-fill');
+                        progressBars.forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-width');
+                        });
+                    }
+                    
+                    observer.unobserve(entry.target); // Анимировать только один раз
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Плавный скролл для якорных ссылок (на случай если CSS scroll-smooth не поддерживается)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
