@@ -22,7 +22,7 @@
                     colors: {
                         primary: '#4F46E5', // Indigo 600
                         secondary: '#10B981', // Emerald 500
-                        dark: '#111827', // Gray 900
+                        dark: '#000000', // Gray 900
                         light: '#F3F4F6', // Gray 100
                     }
                 }
@@ -115,7 +115,6 @@
     <!-- Главный экран (Hero Section) -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-            <!-- Замените фото на свое -->
             <img src="images/hazdeen.jpg" alt="Мое фото" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-white dark:border-gray-700 shadow-lg object-cover">
             
             <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
@@ -131,6 +130,9 @@
                 </a>
                 <a href="https://t.me/h4zdeen" target="_blank" class="px-8 py-3 rounded-full bg-white text-gray-800 font-medium border border-gray-300 hover:bg-gray-50 dark:bg-transparent dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 transition shadow-sm hover:shadow-md transform hover:-translate-y-1">
                     Связаться
+                </a>
+                                <a href="/cv.pdf" download class="px-8 py-3 rounded-full bg-gray-900 text-white font-medium hover:bg-black transition shadow-md transform hover:-translate-y-1">
+                    Скачать CV
                 </a>
             </div>
             
@@ -190,7 +192,7 @@
 
             <div class="marquee-container w-full py-4 relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
                 <div class="animate-marquee flex gap-6">
-                    <!-- Набор 1 (Оригинал) -->
+                    <!-- Набор 1 -->
                     <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
                         <i class="fab fa-html5 text-orange-500 mr-3 text-2xl"></i> HTML
                     </div>
@@ -222,7 +224,7 @@
                         <i class="fab fa-git-alt text-orange-600 mr-3 text-2xl"></i> Git / GitHub
                     </div>
                     
-                    <!-- Набор 2 (Копия для бесшовного зацикливания) -->
+                    <!-- Набор 2 -->
                     <div class="px-6 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-lg font-medium text-gray-800 dark:text-gray-200 shadow-sm flex items-center shrink-0 cursor-default">
                         <i class="fab fa-html5 text-orange-500 mr-3 text-2xl"></i> HTML
                     </div>
@@ -279,12 +281,17 @@
                     </h3>
                     <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Ноябрь 2025 - Настоящее время | PRIME GO SERVICES</time>
                     <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Комплексная работа над проектом по предоставлению различных сервисов (например, Available Network). Настраиваю и администрирую VPS серверы, реализую архитектуру, создаю frontend и backend составляющие платформы.</p>
-                    <a href="https://t.me/primegoservicebot?start=ref_H4ZDEEN" target="_blank" class="inline-flex items-center px-4 py-2 mt-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-primary dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition shadow-sm">
-                        <i class="fas fa-robot mr-2 text-primary dark:text-secondary"></i> Рефералка в Telegram
-                    </a>
+                    
+                    <!-- Обновленная круглая кнопка Telegram -->
+                    <div class="mt-3">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Реферальная ссылка в Telegram:</p>
+                        <a href="https://t.me/primegoservicebot?start=ref_H4ZDEEN" target="_blank" class="inline-flex items-center justify-center w-11 h-11 bg-[#2AABEE] text-white rounded-full hover:bg-[#229ED9] transition shadow-md transform hover:scale-110" title="Перейти в Telegram">
+                            <i class="fab fa-telegram-plane text-xl"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <!-- Элемент 2 (Текущая учеба) - Перемещен и сделан активным -->
+                <!-- Элемент 2 (Текущая учеба) -->
                 <div class="mb-10 ml-6">
                     <span class="absolute flex items-center justify-center w-6 h-6 bg-primary dark:bg-secondary rounded-full -left-3 ring-8 ring-white dark:ring-gray-900">
                         <i class="fas fa-graduation-cap text-white text-xs"></i>
@@ -329,35 +336,41 @@
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Проект 1 -->
+                <!-- Проект 1 (Обновленный PRIME GO) -->
                 <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group flex flex-col">
                     <div class="relative overflow-hidden h-56 bg-gray-900">
                         <img src="images/primego.jpg" alt="PRIME GO SERVICES" class="w-full h-full object-cover blur-md scale-110 transform group-hover:scale-125 transition-transform duration-500 opacity-80">
-                        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="https://t.me/primegoservicebot?start=ref_H4ZDEEN" target="_blank" class="px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition flex items-center transform hover:scale-105">
-                                <i class="fab fa-telegram-plane mr-2 text-primary"></i> Посмотреть в Telegram
+                        <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3">
+                            <a href="https://t.me/primegoservicebot?start=ref_H4ZDEEN" target="_blank" class="w-64 px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-200 transition flex items-center justify-center transform hover:scale-105 shadow-lg">
+                                <i class="fab fa-telegram-plane mr-2 text-[#2AABEE]"></i> Telegram Бот
+                            </a>
+                            <a href="https://app.primego-services.online/" target="_blank" class="w-64 px-6 py-3 bg-primary text-white border border-transparent rounded-full font-medium hover:bg-indigo-700 transition flex items-center justify-center transform hover:scale-105 shadow-lg">
+                                <i class="fas fa-globe mr-2"></i> Перейти на сайт
                             </a>
                         </div>
                     </div>
                     <div class="p-6 flex-grow">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">PRIME GO SERVICES (AN)</h3>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">PRIME GO SERVICES</h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Сервис по предоставлению доступных сетей (Available Network). Проект включает в себя настройку VPS, полноценную backend/frontend разработку платформы и интеграцию с Telegram-ботом.</p>
                     </div>
                 </div>
 
-                <!-- Проект 2 -->
+                <!-- Проект 2 (CashFlow Tracker) -->
                 <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group flex flex-col">
                     <div class="relative overflow-hidden h-56 bg-gray-900">
                         <img src="images/cashflow.png" alt="CashFlow Tracker" class="w-full h-full object-cover blur-md scale-110 transform group-hover:scale-125 transition-transform duration-500 opacity-80">
-                        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="https://t.me/cashflow_trac_bot" target="_blank" class="px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition flex items-center transform hover:scale-105">
-                                <i class="fab fa-telegram-plane mr-2 text-primary"></i> Открыть Мини-Апп
+                        <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3">
+                            <a href="https://t.me/cashflow_trac_bot" target="_blank" class="w-64 px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-200 transition flex items-center justify-center transform hover:scale-105 shadow-lg">
+                                <i class="fab fa-telegram-plane mr-2 text-[#2AABEE]"></i> Открыть Мини-Апп
+                            </a>
+                            <a href="https://github.com/HazDeen/cashflow-tracker" target="_blank" class="w-64 px-6 py-3 bg-[#24292e] text-white border border-gray-600 rounded-full font-medium hover:bg-gray-800 transition flex items-center justify-center transform hover:scale-105 shadow-lg">
+                                <i class="fab fa-github mr-2"></i> Код на GitHub
                             </a>
                         </div>
                     </div>
                     <div class="p-6 flex-grow">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">CashFlow Tracker (TMA)</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Удобное Telegram Mini App (TMA) приложение для учета и аналитики финансов. Позволяет вести доходы и расходы, учитывать кредиты, долги, отслеживать смены на работе, рассчитывать зарплату и мониторить платные подписки.</p>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">CashFlow Tracker</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Удобное Telegram Mini App приложение для учета и аналитики финансов. Позволяет вести доходы и расходы, учитывать кредиты, долги, отслеживать смены на работе, рассчитывать зарплату и мониторить платные подписки.</p>
                     </div>
                 </div>
             </div>
@@ -393,7 +406,10 @@
     <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <span class="text-xl font-bold">Максим Завалом</span>
+                <span id="footer-name" class="text-xl font-bold cursor-help" 
+                    title="Четвертый закон: тело, прижатое к стене, не сопротивляется.">
+                    Максим Завалов (HazDeen)
+                </span>
                 <p class="text-sm text-gray-400 mt-1">&copy; 2026 Все права защищены.</p>
             </div>
             <div class="flex space-x-6">
@@ -489,7 +505,7 @@
             observer.observe(el);
         });
 
-        // Плавный скролл для якорных ссылок (на случай если CSS scroll-smooth не поддерживается)
+        // Плавный скролл для якорных ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
